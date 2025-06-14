@@ -8,7 +8,15 @@ let form = document.querySelector('form');
 let promptTextarea = document.querySelector('textarea[name="prompt"]');
 let chatOutput = document.querySelector('#chat-output');
 let submitButton = document.getElementById('submit-button');
+let backButton = document.getElementById('back-button'); // Ambil tombol dari HTML
+const CI4_START_URL = 'https://hercycle-drab.vercel.app/'; // Ganti dengan URL CI4 Anda
 
+if (backButton) {
+  backButton.addEventListener('click', () => {
+    window.location.href = CI4_START_URL;
+  });
+  backButton.style.display = 'none'; // Sembunyikan awal
+}
 promptTextarea.addEventListener('keydown', function (e) {
   if (e.key === 'Enter' && !e.shiftKey) {
     e.preventDefault(); // Mencegah newline
@@ -93,6 +101,11 @@ form.onsubmit = async (ev) => {
 
   const prompt = promptTextarea.value.trim();
   if (!prompt) return;
+
+  // Di dalam form.onsubmit, sebelum addChatBubble()
+if (backButton) {
+  backButton.style.display = 'block'; // Munculkan tombol
+}
 
   addChatBubble(prompt, 'user');
   promptTextarea.value = '';
