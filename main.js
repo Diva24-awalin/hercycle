@@ -225,3 +225,4 @@ function addChatBubble(text, sender, isLoading = false) {
 
   return bubbleInner;
 }
+
