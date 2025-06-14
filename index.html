@@ -31,12 +31,13 @@
 
       <div
         class="flex-1 rounded-2xl bg-white/30 backdrop-blur-sm shadow-xl overflow-hidden flex flex-col border border-white/20">
-        <div id="chat-output" class="flex-1 overflow-y-auto space-y-4 p-4 max-h-[60vh]">
+        <div class="bg-white/80 p-2 text-center">
           <button id="back-button"
-            class="bg-white/90 text-[#F4A4A4] font-semibold px-4 py-2 rounded-lg ml-auto block hover:bg-white transition-all shadow-sm">
-            Kembali ke Start Chatting
+            class="bg-gradient-to-br from-[#F4A4A4] to-[#DDC5F5] text-white font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-all shadow-md">
+            <i class="fas fa-arrow-left mr-2"></i> Kembali ke Start Chatting
           </button>
         </div>
+        <div id="chat-output" class="flex-1 overflow-y-auto space-y-4 p-4 max-h-[60vh]"></div>
         <div class="bg-white/80 backdrop-blur-sm p-4 border-t border-white/30">
           <form class="flex items-center gap-3" onsubmit="return handleSubmit(event)">
             <div class="flex-1 flex items-center relative">

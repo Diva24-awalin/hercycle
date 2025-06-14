@@ -8,15 +8,33 @@ let form = document.querySelector('form');
 let promptTextarea = document.querySelector('textarea[name="prompt"]');
 let chatOutput = document.querySelector('#chat-output');
 let submitButton = document.getElementById('submit-button');
-let backButton = document.getElementById('back-button'); // Ambil tombol dari HTML
+const backButton = document.getElementById('back-button');
 const CI4_START_URL = 'https://hercycle-drab.vercel.app/'; // Ganti dengan URL CI4 Anda
 
-if (backButton) {
-  backButton.addEventListener('click', () => {
-    window.location.href = CI4_START_URL;
-  });
-  backButton.style.display = 'none'; // Sembunyikan awal
+function showBackButton() {
+  if (backButton) {
+    backButton.style.display = 'block';
+    backButton.style.opacity = '0';
+    setTimeout(() => {
+      backButton.style.opacity = '1';
+      backButton.style.transition = 'opacity 0.3s ease';
+    }, 100);
+  }
 }
+
+function hideBackButton() {
+  if (backButton) {
+    backButton.style.display = 'none';
+  }
+}
+
+// Initialisasi tombol
+if (backButton) {
+    backButton.addEventListener('click', () => {
+        window.location.href = CI4_START_URL;
+    });
+}
+
 promptTextarea.addEventListener('keydown', function (e) {
   if (e.key === 'Enter' && !e.shiftKey) {
     e.preventDefault(); // Mencegah newline
@@ -62,9 +80,15 @@ window.onload = () => {
   typeResponse(responseBubble, responseText, null, 0);
 };
 
-function handleSubmit(ev) {
-  form.onsubmit(ev);
-  return false;
+form.onsubmit = async (ev) => {
+  ev.preventDefault();
+  if (isGenerating) return;
+
+  const prompt = promptTextarea.value.trim();
+  if (!prompt) return;
+
+  showBackButton(); // Tampilkan tombol saat chat dimulai
+  addChatBubble(prompt, 'user');
 }
 
 function changeButtonToStop() {
@@ -103,8 +127,10 @@ form.onsubmit = async (ev) => {
   if (!prompt) return;
 
   // Di dalam form.onsubmit, sebelum addChatBubble()
-if (backButton) {
-  backButton.style.display = 'block'; // Munculkan tombol
+function hideBackButton() {
+  if (backButton) {
+    backButton.style.display = 'none';
+  }
 }
 
   addChatBubble(prompt, 'user');
