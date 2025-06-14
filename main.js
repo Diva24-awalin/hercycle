@@ -45,7 +45,7 @@ const responses = [
   "Saya adalah Chat AI, asisten edukasi interaktif yang dirancang untuk membantu Anda belajar dan mengeksplorasi topik-topik tentang Haid dan Hamil. Bagaimana saya bisa membantu Anda hari ini?",
   "Halo! Saya adalah Chat AI, asisten edukasi interaktif di sini! Saya siap membantu Anda dengan berbagai pertanyaan dan informasi yang Anda butuhkan.",
   "Hai! Saya adalah Chat AI, dan saya di sini untuk memandu Anda melalui berbagai topik terkait haid dan hamil. Ada yang bisa saya bantu?",
-  "Selamat datang! Saya adalah Chat AI, asisten virtual Anda. Apakah Anda membutuhkan bantuan atau informasi tentang topik diabetes?"
+  "Selamat datang! Saya adalah Chat AI, asisten virtual Anda. Apakah Anda membutuhkan bantuan atau informasi tentang topik haid dan hamil?"
 ];
 
 window.onload = () => {
