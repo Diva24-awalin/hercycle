@@ -13,13 +13,12 @@
 
 <body class="bg-gradient-to-br from-[#F4A4A4] to-[#DDC5F5]">
   <div class="absolute inset-0 bg-noise opacity-10 pointer-events-none"></div>
-
+  
   <section class="flex items-center justify-center min-h-screen p-4">
     <div class="w-full max-w-2xl flex flex-col">
       <div class="text-center mb-6">
         <div class="inline-block bg-white/80 backdrop-blur-sm rounded-full p-3 shadow-lg mb-4">
-          <div
-            class="w-16 h-16 mx-auto bg-gradient-to-br from-[#F4A4A4] to-[#DDC5F5] rounded-full flex items-center justify-center text-white text-2xl">
+          <div class="w-16 h-16 mx-auto bg-gradient-to-br from-[#F4A4A4] to-[#DDC5F5] rounded-full flex items-center justify-center text-white text-2xl">
             <i class="fas fa-robot"></i>
           </div>
         </div>
@@ -29,14 +28,7 @@
         <p class="text-white/90 font-medium">Asisten Cerdas untuk edukasi siklus haid dan hamil</p>
       </div>
 
-      <div
-        class="flex-1 rounded-2xl bg-white/30 backdrop-blur-sm shadow-xl overflow-hidden flex flex-col border border-white/20">
-        <div class="bg-white/80 p-2 text-center">
-          <button id="back-button"
-            class="bg-gradient-to-br from-[#F4A4A4] to-[#DDC5F5] text-white font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-all shadow-md">
-            <i class="fas fa-arrow-left mr-2"></i> Kembali ke Start Chatting
-          </button>
-        </div>
+      <div class="flex-1 rounded-2xl bg-white/30 backdrop-blur-sm shadow-xl overflow-hidden flex flex-col border border-white/20">
         <div id="chat-output" class="flex-1 overflow-y-auto space-y-4 p-4 max-h-[60vh]"></div>
         <div class="bg-white/80 backdrop-blur-sm p-4 border-t border-white/30">
           <form class="flex items-center gap-3" onsubmit="return handleSubmit(event)">
@@ -55,7 +47,7 @@
           </form>
         </div>
       </div>
-
+      
       <div class="text-center mt-4 text-white/70 text-sm">
         <p>Chat AI mungkin menghasilkan informasi yang tidak akurat</p>
       </div>
@@ -67,11 +59,11 @@
   <script>
     const textarea = document.querySelector('textarea[name="prompt"]');
     const clearButton = document.getElementById('clear-button');
-
+    
     textarea.addEventListener('input', function () {
       this.style.height = 'auto';
       this.style.height = this.scrollHeight + 'px';
-
+      
       // Show/hide clear button based on input
       if (this.value.trim() !== '') {
         clearButton.classList.remove('hidden');
@@ -79,8 +71,8 @@
         clearButton.classList.add('hidden');
       }
     });
-
-    clearButton.addEventListener('click', function () {
+    
+    clearButton.addEventListener('click', function() {
       textarea.value = '';
       textarea.style.height = '50px';
       clearButton.classList.add('hidden');
