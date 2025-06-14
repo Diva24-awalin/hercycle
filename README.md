@@ -1,6 +1,6 @@
-# Glucozia AI - Asisten Cerdas untuk Edukasi Diabetes
+# Chat AI - Asisten Cerdas untuk Edukasi siklus haid dan hamil
 ## 🚀 Deskripsi
-**Glucozia AI** adalah chatbot berbasis kecerdasan buatan yang dirancang untuk memberikan edukasi mengenai diabetes. Menggunakan API dari [Gemini AI](https://ai.google.dev/), chatbot ini membantu pengguna dalam mendapatkan informasi yang akurat dan terpercaya mengenai penyakit diabetes, pola makan, pengobatan, dan gaya hidup sehat.
+**Chat AI** adalah chatbot berbasis kecerdasan buatan yang dirancang untuk memberikan edukasi mengenai diabetes. Menggunakan API dari [Gemini AI](https://ai.google.dev/), chatbot ini membantu pengguna dalam mendapatkan informasi yang akurat dan terpercaya mengenai penyakit dalam siklus haid dan hamil, pola makan, pengobatan, dan gaya hidup sehat.
 
 ## 🎯 Fitur Utama
 - 🔹 **Informasi Diabetes**: Memberikan penjelasan mengenai jenis diabetes, gejala, penyebab, dan pengobatan.

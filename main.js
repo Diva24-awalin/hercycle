@@ -2,12 +2,20 @@ import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } from "@google/ge
 import MarkdownIt from 'markdown-it';
 import './style.css';
 
-let API_KEY = 'AIzaSyA8pXYAck0TNfpxPg6_N7oMgOG6OYZjCiY';
+let API_KEY = 'AIzaSyBqpbXbHszsGt5TLhjnKd6r6KQPpMyqcIc';
 
 let form = document.querySelector('form');
 let promptTextarea = document.querySelector('textarea[name="prompt"]');
 let chatOutput = document.querySelector('#chat-output');
 let submitButton = document.getElementById('submit-button');
+
+promptTextarea.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault(); // Mencegah newline
+    form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+  }
+});
+
 
 const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({
@@ -34,10 +42,10 @@ let stopGeneration = false;
 let currentTypingInterval = null;
 
 const responses = [
-  "Saya adalah Glucozia AI, asisten edukasi interaktif yang dirancang untuk membantu Anda belajar dan mengeksplorasi topik-topik tentang diabetes. Bagaimana saya bisa membantu Anda hari ini?",
-  "Halo! Saya adalah Glucozia AI, asisten edukasi interaktif di sini! Saya siap membantu Anda dengan berbagai pertanyaan dan informasi yang Anda butuhkan.",
-  "Hai! Saya adalah Glucozia AI, dan saya di sini untuk memandu Anda melalui berbagai topik terkait diabetes. Ada yang bisa saya bantu?",
-  "Selamat datang! Saya adalah Glucozia AI, asisten virtual Anda. Apakah Anda membutuhkan bantuan atau informasi tentang topik diabetes?"
+  "Saya adalah Chat AI, asisten edukasi interaktif yang dirancang untuk membantu Anda belajar dan mengeksplorasi topik-topik tentang Haid dan Hamil. Bagaimana saya bisa membantu Anda hari ini?",
+  "Halo! Saya adalah Chat AI, asisten edukasi interaktif di sini! Saya siap membantu Anda dengan berbagai pertanyaan dan informasi yang Anda butuhkan.",
+  "Hai! Saya adalah Chat AI, dan saya di sini untuk memandu Anda melalui berbagai topik terkait haid dan hamil. Ada yang bisa saya bantu?",
+  "Selamat datang! Saya adalah Chat AI, asisten virtual Anda. Apakah Anda membutuhkan bantuan atau informasi tentang topik diabetes?"
 ];
 
 window.onload = () => {
@@ -96,13 +104,13 @@ form.onsubmit = async (ev) => {
     prompt.toLowerCase().includes('siapa yang mengembangkan kamu') || 
     prompt.toLowerCase().includes('siapa developer kamu')
   ) {
-    const responseText = `Saya dibuat oleh tim GlucoWise.`;
+    const responseText = `Saya dibuat oleh tim Hercycle.`;
     const responseBubble = addChatBubble('', 'ai', true);
     typeResponse(responseBubble, responseText, null, 0);
   } else if (
     prompt.toLowerCase().includes('siapa kamu') || 
     prompt.toLowerCase().includes('kamu siapa') || 
-    prompt.toLowerCase().includes('siapa Glucozia AI')
+    prompt.toLowerCase().includes('siapa Hercycle')
   ) {
     const responseText = getRandomResponse();
     const responseBubble = addChatBubble('', 'ai', true);
@@ -146,8 +154,6 @@ form.onsubmit = async (ev) => {
               temperature: 0.8,
             }
           });
-          isGenerating = false;
-          changeButtonToSubmit();
         });
       } else {
         loadingBubble.innerHTML = md ? md.render(fullResponse) : fullResponse;
@@ -169,6 +175,7 @@ function getRandomResponse() {
   return responses[randomIndex];
 }
 
+// ✅ tombol "Stop" otomatis kembali ke "Kirim" setelah selesai animasi mengetik
 function typeResponse(element, text, md, index = 0, callback) {
   if (index < text.length && !stopGeneration) {
     element.innerHTML = md ? md.render(text.slice(0, index + 1)) : text.slice(0, index + 1);
@@ -181,6 +188,8 @@ function typeResponse(element, text, md, index = 0, callback) {
     }, 25);
   } else {
     element.classList.remove('normal', 'text-gray-100');
+    changeButtonToSubmit(); // ⬅️ otomatis ubah ke "Kirim"
+    isGenerating = false;
     if (callback) callback();
     currentTypingInterval = null;
     return null;
