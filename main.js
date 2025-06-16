@@ -69,7 +69,7 @@ function changeButtonToStop() {
 function changeButtonToSubmit() {
   submitButton.innerHTML = 'Kirim <i class="fa-regular fa-paper-plane ml-1"></i>';
   submitButton.classList.remove('bg-red-500', 'hover:bg-red-600');
-  submitButton.classList.add('bg-[#1A998E]', 'hover:bg-[#137a72]');
+  submitButton.classList.add('bg-[#E18EA0]', 'hover:bg-[#c9768c]'); // Pink sesuai desain
   submitButton.onclick = null;
   submitButton.type = 'submit';
 }
