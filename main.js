@@ -2,7 +2,7 @@ import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } from "@google/ge
 import MarkdownIt from 'markdown-it';
 import './style.css';
 
-let API_KEY = 'AIzaSyB92Ea6y8Ngd1n80IFB6j4wOVznUJnYsjg';
+let API_KEY = 'AIzaSyCmlEY7ot4zRK5yKaUZix9ml6j77c4w9ac';
 
 let form = document.querySelector('form');
 let promptTextarea = document.querySelector('textarea[name="prompt"]');
